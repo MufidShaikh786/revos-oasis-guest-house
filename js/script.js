@@ -1,7 +1,7 @@
 /* ===== Configure these (all site settings live here) ===== */
 const CONFIG = {
   whatsapp: "919673558365",                                   // country code + number, no + or spaces
-  googleFormUrl: "https://forms.gle/WEGbUTJPdr13ibiw7",       // opened by "COMPLETE GUEST DETAILS"
+  googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfK6ypO4_wgrqnNMp1mo1LgUZ7r10smHrTowy6s2prI5-cMig/viewform?usp=pp_url",
   sheetsEndpoint: "https://script.google.com/macros/s/AKfycbwnVKcU9JYwOkGXZRS_ZZ0jC3fPjEryXDkPBhUGjtXQYBd7VW98WVaBnCxFrtkK1uk1/exec", // Google Apps Script Web app URL (see apps-script/SETUP.md)
   instagramFeedEndpoint: "",                                  // Google Apps Script Web app URL (see apps-script/SETUP.md)
   mapEmbedUrl: "https://www.google.com/maps?q=16.047562711126414%2C73.4746294997459&z=16&output=embed" // Revo's Oasis Resort coordinates
@@ -20,8 +20,16 @@ if (form) {
   const now = new Date();
   const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
   form.checkin.min = form.checkout.min = today;
-  document.getElementById("gfLink").href = CONFIG.googleFormUrl;
   const waText = d => `Hello Revo's Oasis, I would like to enquire.\nName: ${d.name}\nMobile: ${d.mobile}\nEmail: ${d.email || "-"}\nCheck-in: ${d.checkin}\nCheck-out: ${d.checkout}\nGuests: ${d.guests}\nMessage: ${d.message || "-"}`;
+  const guestDetailsUrl = d => {
+    const url = new URL(CONFIG.googleFormUrl);
+    url.searchParams.set("entry.282370109", d.name);
+    url.searchParams.set("entry.898232147", d.mobile);
+    url.searchParams.set("entry.1455859452", d.checkin);
+    url.searchParams.set("entry.1434559562", d.checkout);
+    url.searchParams.set("entry.1032147840", d.message || "");
+    return url.href;
+  };
   const fail = (msg, d) => {
     err.textContent = msg; fallback.hidden = false;
     document.getElementById("waLink").href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(waText(d))}`;
@@ -48,6 +56,7 @@ if (form) {
       const res = await fetch(CONFIG.sheetsEndpoint, { method: "POST", headers: {"Content-Type": "text/plain;charset=utf-8"}, body: JSON.stringify(d), signal: ctl.signal });
       const out = await res.json();
       if (!out.ok) throw new Error(out.error || "not saved");
+      document.getElementById("gfLink").href = guestDetailsUrl(d);
       form.hidden = true; done.hidden = false; done.focus({preventScroll:true});
       done.scrollIntoView({behavior:"smooth", block:"center"});
     } catch (x) {

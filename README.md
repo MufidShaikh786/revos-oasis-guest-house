@@ -9,10 +9,11 @@ Open this folder in VS Code and use Live Server, or serve it with any local stat
 ## Configure before launch
 
 1. Follow [`apps-script/SETUP.md`](apps-script/SETUP.md) to deploy the Google Apps Script, set the Instagram API credentials in Script Properties, and paste the deployed URL into `CONFIG.sheetsEndpoint` and `CONFIG.instagramFeedEndpoint` in `js/script.js`. Test a real enquiry from the deployed site. Until configured, the form keeps its data and provides a WhatsApp fallback; the profile link works without the live feed.
-2. The map is configured to the resort coordinates in `CONFIG.mapEmbedUrl`. Update it only if the confirmed location changes.
-3. Add the client's photos using the filenames in [`PENDING.md`](PENDING.md). Update image dimensions if the supplied photos do not match the existing 1280 × 960 room images.
-4. Replace every `YOUR-DOMAIN` placeholder in the HTML files, `robots.txt` and `sitemap.xml` with the confirmed production domain. Do not launch with the placeholder URLs.
-5. Replace the `[PENDING: ...]` copy only after the client confirms the facts. Confirm the Instagram handle spelling with the owner.
+2. After an enquiry is successfully saved, **Complete Guest Details** pre-fills the Google Form's name, mobile, check-in/out dates and special requests. Required details not collected by the website (such as room count, address and payment information) still need to be completed in Google Forms. If those Form questions change, update their `entry.*` IDs in `guestDetailsUrl` in `js/script.js`.
+3. The map is configured to the resort coordinates in `CONFIG.mapEmbedUrl`. Update it only if the confirmed location changes.
+4. Add the client's photos using the filenames in [`PENDING.md`](PENDING.md). Update image dimensions if the supplied photos do not match the existing 1280 × 960 room images.
+5. Replace every `YOUR-DOMAIN` placeholder in the HTML files, `robots.txt` and `sitemap.xml` with the confirmed production domain. Do not launch with the placeholder URLs.
+6. Replace the `[PENDING: ...]` copy only after the client confirms the facts. Confirm the Instagram handle spelling with the owner.
 
 ## Deploy with GitHub and Cloudflare Pages
 
