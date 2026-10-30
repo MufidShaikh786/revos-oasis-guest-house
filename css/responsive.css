@@ -1,0 +1,29 @@
+@media (max-width:860px){
+  .menu-btn{display:block}
+  .nav nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:1rem;background:var(--teal);padding:1.2rem 5vw}
+  .nav nav.open{display:flex}
+  .two{grid-template-columns:1fr;gap:2rem}.ph-tall{min-height:280px}
+  .grid3,.fac{grid-template-columns:1fr}
+  .fac li{padding-right:0}
+  .feature-grid,.places-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .feature-card{min-height:0;padding:1.2rem}
+  .feature-cta{align-items:flex-start;flex-direction:column}
+  .booking-location{grid-template-columns:1fr;gap:2rem}
+  .location-panel{order:2}
+  .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:480px){
+  .row{grid-template-columns:1fr}.actions .btn{width:100%;text-align:center}
+  .feature-grid,.places-grid{grid-template-columns:1fr;gap:.75rem}
+  .feature-card,.place-card{padding:1rem;align-items:center}
+  .feature-card{align-items:flex-start}
+  .feature-icon,.place-icon{width:2.9rem;height:2.9rem;flex-basis:2.9rem}
+  .feature-cta{padding:1.25rem}
+  .feature-cta .btn{width:100%;text-align:center}
+  .booking-location{gap:1.5rem}
+  .location-panel{padding:1.2rem}
+  .home-foot{padding:2.5rem 5vw 1.2rem}
+  .footer-grid{grid-template-columns:1fr;gap:1.5rem}
+  .footer-bottom{align-items:flex-start;flex-direction:column}
+}
+@media (max-width:860px){.grid4,.ig-grid{grid-template-columns:1fr 1fr}.ig-link{padding:.2rem 0}}
