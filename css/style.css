@@ -31,7 +31,7 @@ a{color:inherit}
 .btn.ghost{background:transparent;color:#fff;border-color:#fff}
 .after .btn.ghost{color:var(--teal);border-color:var(--teal)}
 .link{color:var(--green);font-weight:500}
-.sec{padding:clamp(3.5rem,9vw,7rem) 5vw}
+.sec{padding:clamp(2.75rem,6vw,5rem) 5vw}
 .tint{background:var(--sand)}
 .wrap{max-width:1100px;margin:auto}.narrow{max-width:620px}
 .two{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center}
@@ -79,8 +79,10 @@ body:not(.inner) #explore .place-icon{background:var(--seafoam);color:var(--gree
 body:not(.inner) #facilities .feature-intro h2::after,body:not(.inner) #explore h2::after,body:not(.inner) #rooms h2::after{content:"";display:block;width:3.5rem;height:3px;margin-top:.85rem;border-radius:99px;background:var(--gold)}
 body:not(.inner) #enquiry form{padding:1.4rem;background:var(--shell);border:1px solid rgba(11,61,68,.1);border-top:3px solid var(--gold);border-radius:10px;box-shadow:0 16px 38px rgba(11,61,68,.08)}
 body:not(.inner) #enquiry input,body:not(.inner) #enquiry textarea{width:100%;min-width:0}
-.booking-location{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:start;gap:2.5rem}
+.booking-location{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);grid-template-areas:"location enquiry";align-items:start;gap:2.5rem}
 .booking-panel,.location-panel{min-width:0}
+.booking-panel{grid-area:enquiry}
+.location-panel{grid-area:location}
 .booking-panel h2,.location-panel h2{margin:.45rem 0 .65rem}
 .booking-panel>.sub{margin-bottom:1.1rem}
 .location-panel{padding:1.8rem;background:rgba(255,255,255,.62);border:1px solid rgba(11,61,68,.1);border-radius:10px}
@@ -110,7 +112,7 @@ input,textarea{font:inherit;padding:.7rem .8rem;border:1px solid #b9b39f;border-
 /* placeholders, inner pages, gallery */
 .ph[data-ph]::before{content:attr(data-ph);position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:1rem;color:rgba(255,255,255,.8);font-size:.9rem;border:2px dashed rgba(255,255,255,.4);border-radius:var(--r);margin:10px;z-index:0}
 .ph img{z-index:1}
-.page-head{background:linear-gradient(160deg,var(--teal),var(--teal2));color:#fff;padding:8rem 5vw 3rem}
+.page-head{background:linear-gradient(160deg,var(--teal),var(--teal2));color:#fff;padding:7rem 5vw 2.5rem}
 .page-head h1{color:#fff;font-size:clamp(2.5rem,6vw,4rem)}.page-head .lead{color:#e8e2d0}
 .gallery-back{display:inline-flex;align-items:center;gap:.45rem;margin-bottom:1.25rem;padding:.45rem .9rem;border:1px solid rgba(250,246,236,.55);border-radius:var(--r);color:var(--ivory);font-size:.92rem;text-decoration:none;transition:background .2s ease,color .2s ease}
 .gallery-back:hover{background:var(--gold);border-color:var(--gold);color:var(--teal)}

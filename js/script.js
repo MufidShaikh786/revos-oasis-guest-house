@@ -4,7 +4,7 @@ const CONFIG = {
   googleFormUrl: "https://forms.gle/WEGbUTJPdr13ibiw7",       // opened by "COMPLETE GUEST DETAILS"
   sheetsEndpoint: "https://script.google.com/macros/s/AKfycbwnVKcU9JYwOkGXZRS_ZZ0jC3fPjEryXDkPBhUGjtXQYBd7VW98WVaBnCxFrtkK1uk1/exec", // Google Apps Script Web app URL (see apps-script/SETUP.md)
   instagramFeedEndpoint: "",                                  // Google Apps Script Web app URL (see apps-script/SETUP.md)
-  mapEmbedUrl: ""                                             // Google Maps > Share > Embed a map > copy the src="..." URL
+  mapEmbedUrl: "https://www.google.com/maps?q=16.047562711126414%2C73.4746294997459&z=16&output=embed" // Revo's Oasis Resort coordinates
 };
 /* ===== Navigation ===== */
 const nav = document.getElementById("nav"), menu = document.getElementById("menu"), btn = document.getElementById("menuBtn");
@@ -58,7 +58,7 @@ if (form) {
 /* ===== Google Map (shows once mapEmbedUrl is set) ===== */
 const mapBox = document.getElementById("mapBox");
 if (mapBox && CONFIG.mapEmbedUrl) {
-  mapBox.innerHTML = `<iframe src="${CONFIG.mapEmbedUrl}" title="Map of Revo's Oasis Guest House, Dandi Beach, Malvan" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`;
+  mapBox.innerHTML = `<iframe src="${CONFIG.mapEmbedUrl}" title="Map of Revo's Oasis Resort, Dandi Beach, Malvan" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`;
 }
 /* ===== Gallery lightbox (opens only photos that exist) ===== */
 const lb = document.getElementById("lb");

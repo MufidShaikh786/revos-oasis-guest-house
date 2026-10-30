@@ -13,9 +13,10 @@
 - [ ] Update the deployed Apps Script with the current `apps-script/Code.gs` and deploy a new version (public GET currently reports `Script function not found: doGet`)
 - [ ] Submit a real enquiry and verify it appears in the shared Sheet
 - [ ] Connect Instagram Graph API: set `instagramFeedEndpoint` and add `INSTAGRAM_USER_ID` / `INSTAGRAM_ACCESS_TOKEN` to Apps Script Script Properties (see apps-script/SETUP.md)
-- [ ] Google Maps embed URL -> js/script.js `mapEmbedUrl`
+- [x] Google Maps embedded map and directions link configured to confirmed coordinates
 - [ ] Owner story / welcome text (about.html)
 - [x] Address and check-in/out times added (contact.html + structured data)
 - [x] Pin code (416606) and email (reyosoasis@gmail.com)
+- [x] Resort coordinates added to maps, directions links, and structured data
 - [ ] Room types and rates, if the client wants them shown
 - [ ] Final domain -> replace YOUR-DOMAIN in all .html files, robots.txt, sitemap.xml
