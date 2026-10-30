@@ -16,6 +16,7 @@ menu.addEventListener("click", e => { if (e.target.closest("a")) { menu.classLis
 const form = document.getElementById("enqForm");
 if (form) {
   const err = document.getElementById("formErr"), sendBtn = document.getElementById("sendBtn");
+  const formStatus = document.getElementById("formStatus");
   const fallback = document.getElementById("fallback"), done = document.getElementById("done");
   const now = new Date();
   const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
@@ -50,16 +51,20 @@ if (form) {
     const guests = Number(d.guests);
     if (!Number.isInteger(guests) || guests < 1 || guests > 30) return err.textContent = "Enter a guest count between 1 and 30.";
     if (!CONFIG.sheetsEndpoint) return fail("Online enquiries are not switched on yet. Your details are still in the form, so please use WhatsApp or call 9673558365.", d);
-    sendBtn.disabled = true; sendBtn.textContent = "Sending...";
+    sendBtn.disabled = true; sendBtn.textContent = "Saving enquiry...";
+    formStatus.hidden = false;
+    formStatus.textContent = "Saving your enquiry. This may take a few seconds.";
     const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 20000);
     try {
       const res = await fetch(CONFIG.sheetsEndpoint, { method: "POST", headers: {"Content-Type": "text/plain;charset=utf-8"}, body: JSON.stringify(d), signal: ctl.signal });
       const out = await res.json();
       if (!out.ok) throw new Error(out.error || "not saved");
+      formStatus.textContent = ""; formStatus.hidden = true;
       document.getElementById("gfLink").href = guestDetailsUrl(d);
       form.hidden = true; done.hidden = false; done.focus({preventScroll:true});
-      done.scrollIntoView({behavior:"smooth", block:"center"});
+      done.scrollIntoView({behavior:"instant", block:"center"});
     } catch (x) {
+      formStatus.textContent = ""; formStatus.hidden = true;
       fail("We could not save your enquiry. Nothing was lost: your details are still in the form. Please try again, or send it on WhatsApp.", d);
     } finally { clearTimeout(timer); sendBtn.disabled = false; sendBtn.textContent = "Send enquiry"; }
   });
